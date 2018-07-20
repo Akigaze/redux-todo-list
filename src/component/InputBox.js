@@ -8,6 +8,7 @@ export default class InputBox extends Component {
   }
   add=()=>{
       if(this.text.current.value.trim()===""){
+          this.text.current.value=""
           return
       }
       const { createTask } = this.props

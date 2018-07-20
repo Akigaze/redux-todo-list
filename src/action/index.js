@@ -1,20 +1,22 @@
+import * as types from "../constant/ActionType"
+
 let nextTaskId = 0
 export const addition = text => {
   return {
-    type: "ADD",
+    type: types.ADDITION,
     id: nextTaskId++,
     text
   }
 }
 export const toggle = id => {
   return {
-    type: "CHECK",
+    type: types.TOGGLE,
     id
   }
 }
 export const filter = filterName => {
   return {
-    type: "SET_FILTER",
+    type: types.FILTER,
     filter:filterName
   }
 }

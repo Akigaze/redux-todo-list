@@ -1,15 +1,16 @@
 import TaskGroup from "../component/TaskGroup"
 import { connect } from "react-redux"
 import { toggle } from "../action/index"
+import * as filterTypes from "../constant/FilterType"
 
 function getTasksByFilter(todos, filter) {
   switch (filter) {
-    case "ACTIVE":{
+    case filterTypes.ACTIVE:{
         const filterTodos=todos.filter(t => !t.completed)
         return filterTodos
     }
 
-    case "COMPLETE":{
+    case filterTypes.COMPLETE:{
         const filterTodos=todos.filter(t => t.completed)
         return filterTodos
     }

@@ -1,5 +1,5 @@
 const TodoAPI={
-    const todos=[];
+    const todos=[{id:111,text:"小猪佩奇",completed:false}]
     toggleActive=(id)={
         const todo=todos.find(t=>t.id==id)
         todo.completed=!todo.completed

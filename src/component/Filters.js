@@ -1,20 +1,21 @@
-import React, { Component } from "react";
-import "../css/todo.css";
+import React, { Component } from "react"
+import * as filterTypes from "../constant/FilterType"
+import "../css/todo.css"
 
 export default class Filters extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   render() {
-    const { currentFilter, filterTask } = this.props;
+    const { currentFilter, filterTask } = this.props
     return (
       <div>
         <ul id="filters">
           <li>
             <a
               href="#"
-              className={currentFilter === "ALL" ? "selected" : " "}
-              onClick={() => filterTask("ALL")}
+              className={currentFilter === filterTypes.DEFAULT ? "selected" : " "}
+              onClick={() => filterTask(filterTypes.DEFAULT)}
             >
               all
             </a>
@@ -22,8 +23,8 @@ export default class Filters extends Component {
           <li>
             <a
               href="#"
-              className={currentFilter === "ACTIVE" ? "selected" : " "}
-              onClick={() => filterTask("ACTIVE")}
+              className={currentFilter === filterTypes.ACTIVE ? "selected" : " "}
+              onClick={() => filterTask(filterTypes.ACTIVE)}
             >
               active
             </a>
@@ -31,14 +32,14 @@ export default class Filters extends Component {
           <li>
             <a
               href="#"
-              className={currentFilter === "COMPLETE" ? "selected" : " "}
-              onClick={() => filterTask("COMPLETE")}
+              className={currentFilter === filterTypes.COMPLETE ? "selected" : " "}
+              onClick={() => filterTask(filterTypes.COMPLETE)}
             >
               complete
             </a>
           </li>
         </ul>
       </div>
-    );
+    )
   }
 }

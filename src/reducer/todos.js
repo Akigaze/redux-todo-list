@@ -1,6 +1,8 @@
+import * as types from "../constant/ActionType"
+
 export default (state = [], action) => {
     switch (action.type) {
-        case "ADD":{
+        case types.ADDITION:{
             const newState=[
                 ...state,
                 {
@@ -12,7 +14,7 @@ export default (state = [], action) => {
             return newState
         }
 
-        case "CHECK":
+        case types.TOGGLE:
             const newState=state.map(s => toggleTask(s, action))
             return newState
         default:
