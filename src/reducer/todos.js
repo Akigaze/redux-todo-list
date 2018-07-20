@@ -6,7 +6,7 @@ export default (state = [], action) => {
                 {
                     id:action.id,
                     text: action.text,
-                    completed: "active"
+                    completed: false
                 }
             ]
             return newState
@@ -26,6 +26,6 @@ const toggleTask = (task, action) => {
     }
     return {
         ...task,
-        completed: task.completed === "active" ? "complete" : "active"
+        completed: task.completed ? false : true
     }
 }

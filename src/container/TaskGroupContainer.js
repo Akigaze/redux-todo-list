@@ -5,12 +5,12 @@ import { toggle } from "../action/index"
 function getTasksByFilter(todos, filter) {
   switch (filter) {
     case "ACTIVE":{
-        const filterTodos=todos.filter(t => t.completed==="active")
+        const filterTodos=todos.filter(t => !t.completed)
         return filterTodos
     }
 
     case "COMPLETE":{
-        const filterTodos=todos.filter(t => t.completed==="complete")
+        const filterTodos=todos.filter(t => t.completed)
         return filterTodos
     }
     default:
