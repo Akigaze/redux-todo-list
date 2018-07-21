@@ -21,7 +21,7 @@ function getTasksByFilter(todos, filter) {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        todos: getTasksByFilter(state.todos, state.filter)
+        todos: state.todos
     }
 }
 

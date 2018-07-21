@@ -1,6 +1,8 @@
 import InputBox from "../component/InputBox"
 import { connect } from "react-redux"
 import { addition } from "../action/index"
+import todoApi from "../api/TodoResourceAPI"
+import Todo from "../model/todo.js"
 
 const mapStateToProps = (state, ownProps) => {
     return {}
@@ -8,7 +10,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        createTask: text => dispatch(addition(text.current.value))
+        createTask: text => {
+            const todos=todoApi.add(new Todo(text.current.value))
+            dispatch(addition(todos))}
     }
 }
 

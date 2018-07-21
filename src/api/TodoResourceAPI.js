@@ -1,17 +1,17 @@
 import Todo from '../model/todo'
-import filterTypes from '../constant/FilterType'
+import * as filterTypes from '../constant/FilterType'
 
 const todoApi = {
     todos: [],
     filter: filterTypes.DEFAULT,
     add(item) {
         this.todos.push(item)
-        return filerByStatus()
+        return this.filerByStatus()
     },
     changeFilter(selection){
         this.filter=selection
-        return filerByStatus()
-    }
+        return this.filerByStatus()
+    },
     filerByStatus() {
         switch (this.filter) {
             case filterTypes.ACTIVE: {
@@ -32,16 +32,16 @@ const todoApi = {
         if (todo !== undefined) {
             todo.toggleActive()
         }
-        return filerByStatus()
+        return this.filerByStatus()
 
     },
     updateItemContent(id, content) {
-        let todo = this.todos.find(item => item.id === viewId)
+        let todo = this.todos.find(item => item.id === id)
         if (todo !== undefined) {
             todo.text = content
         }
-        return filerByStatus()
-        
+        return this.filerByStatus()
+
     }
 }
 export default todoApi
