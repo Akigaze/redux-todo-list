@@ -21,10 +21,9 @@ export const filter = (filterName,todos) => {
         todos
     }
 }
-export const edition = (id, text) => {
+export const edition = todos => {
     return {
         type: types.EDITION,
-        id,
-        text
+        todos
     }
 }

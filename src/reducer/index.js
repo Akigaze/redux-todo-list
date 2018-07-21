@@ -21,10 +21,7 @@ export default (state = {todos:[],filter:filterTypes.DEFAULT}, action) => {
             return {...state,todos:[...action.todos]}
         }
         case types.EDITION:{
-            const newState=[...state]
-            const target=newState.find(t=>t.id==action.id)
-            target.text=action.text
-            return newState
+            return {...state,todos:[...action.todos]}
         }
         case types.FILTER:{
             return {todos:[...action.todos],filter:action.filter}

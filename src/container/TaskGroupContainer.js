@@ -33,7 +33,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             const todos=todoApi.toggleActive(id)
             dispatch(toggle(todos))
         },
-        confirmEdite: (id, text) => dispatch(edition(id, text))
+        confirmEdite: (id, text) => {
+            const todos=todoApi.updateItemContent(id,text)
+            dispatch(edition(todos))
+        }
     }
 }
 
