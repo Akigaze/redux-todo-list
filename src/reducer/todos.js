@@ -17,7 +17,7 @@ export default (state = [], action) => {
 
         case types.TOGGLE:{
             //const newState=state.map(s => toggleTask(s, action))
-            return action.todos
+            return [...action.todos]
         }
         case types.EDITION:{
             const newState=[...state]

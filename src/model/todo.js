@@ -8,6 +8,6 @@ export default class Todo{
 
 
     toggleActive() {
-        this.status = this.status === Todo.ACTIVE ? Todo.COMPLETED : Todo.ACTIVE
+        this.completed = !this.completed
     }
 }

@@ -33,7 +33,6 @@ const todoApi = {
             todo.toggleActive()
         }
         return this.filerByStatus()
-
     },
     updateItemContent(id, content) {
         let todo = this.todos.find(item => item.id === id)

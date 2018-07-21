@@ -2,6 +2,8 @@ import TaskGroup from "../component/TaskGroup"
 import { connect } from "react-redux"
 import { toggle, edition } from "../action/index"
 import * as filterTypes from "../constant/FilterType"
+import todoApi from "../api/TodoResourceAPI"
+import Todo from "../model/todo.js"
 
 function getTasksByFilter(todos, filter) {
     switch (filter) {
@@ -27,7 +29,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        toggleTask: id => dispatch(toggle(id)),
+        toggleTask: id => {
+            const todos=todoApi.toggleActive(id)
+            dispatch(toggle(todos))
+        },
         confirmEdite: (id, text) => dispatch(edition(id, text))
     }
 }
