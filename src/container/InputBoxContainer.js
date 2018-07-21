@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createTask: text => {
             const todos=todoApi.add(new Todo(text.current.value))
+            todoApi.getHttp()
             dispatch(addition(todos))}
     }
 }
