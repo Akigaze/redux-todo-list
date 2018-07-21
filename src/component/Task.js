@@ -5,6 +5,17 @@ export default class Task extends Component {
     constructor(props) {
         super(props)
     }
+    edit=(event)=>{
+        event.target.setAttribute("contentEditable","true");
+    }
+    update=(id,event)=>{
+        const key=event.key
+        if(key==="Enter"){
+            this.props.confirmEdite(id,event.currentTarget.innerText)
+            event.target.setAttribute("contentEditable","false");
+
+        }
+    }
     render() {
         const { id, toggleTask, completed, text } = this.props
         return (
@@ -15,7 +26,7 @@ export default class Task extends Component {
                     onClick={() => toggleTask(id)}
                     checked={completed ? "checked" : ""}
                 />
-                <span>{text}</span>
+            <span onDoubleClick={this.edit} onKeyPress={(event)=>{this.update(id,event)}}>{text}</span>
             </li>
         )
     }

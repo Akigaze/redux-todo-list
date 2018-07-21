@@ -7,13 +7,14 @@ export default class TaskGroup extends Component {
         super(props)
     }
     render() {
-        const { todos, toggleTask } = this.props
+        const { todos, toggleTask ,confirmEdite} = this.props
         let tasks = todos.map(t => (
             <Task
                 id={t.id}
                 completed={t.completed}
                 text={t.text}
                 toggleTask={toggleTask}
+                confirmEdite={confirmEdite}
             />
         ))
 

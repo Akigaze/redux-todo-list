@@ -20,3 +20,10 @@ export const filter = filterName => {
     filter:filterName
   }
 }
+export const edition = (id,text) => {
+  return {
+    type: types.EDITION,
+    id,
+    text
+  }
+}
