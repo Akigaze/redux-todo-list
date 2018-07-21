@@ -1,6 +1,8 @@
 import Filters from "../component/Filters"
 import { connect } from "react-redux"
 import { filter } from "../action/index"
+import todoApi from "../api/TodoResourceAPI"
+import Todo from "../model/todo.js"
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -11,7 +13,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 
     return {
-        filterTask: status => dispatch(filter(status))
+        filterTask: status => {
+            const todos=todoApi.changeFilter(status)
+            dispatch(filter(status,todos))
+        }
     }
 }
 

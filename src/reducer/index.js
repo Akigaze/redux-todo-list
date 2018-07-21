@@ -1,8 +1,45 @@
-import { combineReducers } from "redux"
-import todos from "./todos"
-import filter from "./filter"
+import * as types from "../constant/ActionType"
+import * as filterTypes from '../constant/FilterType'
 
-export default combineReducers({
-  todos,
-  filter
-})
+export default (state = {todos:[],filter:filterTypes.DEFAULT}, action) => {
+    switch (action.type) {
+        case types.ADDITION:{
+            // const newState=[
+            //     ...state,
+            //     {
+            //         id:action.id,
+            //         text: action.text,
+            //         completed: false
+            //     }
+            // ]
+            // newState = [...action.todos]
+            return {...state,todos:[...action.todos]}
+        }
+
+        case types.TOGGLE:{
+            //const newState=state.map(s => toggleTask(s, action))
+            return {...state,todos:[...action.todos]}
+        }
+        case types.EDITION:{
+            const newState=[...state]
+            const target=newState.find(t=>t.id==action.id)
+            target.text=action.text
+            return newState
+        }
+        case types.FILTER:{
+            return {todos:[...action.todos],filter:action.filter}
+        }
+        default:
+            return state
+    }
+}
+
+// const toggleTask = (task, action) => {
+//     if (task.id !== action.id) {
+//         return task
+//     }
+//     return {
+//         ...task,
+//         completed: task.completed ? false : true
+//     }
+// }

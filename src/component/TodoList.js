@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import TaskGroup from "../container/TaskGroupContainer";
-import InputBox from "../container/InputBoxContainer";
-import Filters from "../container/FiltersContainer";
+import React, { Component } from "react"
+import TaskGroup from "../container/TaskGroupContainer"
+import InputBox from "../container/InputBoxContainer"
+import Filters from "../container/FiltersContainer"
 
-import "../css/todo.css";
+import "../css/todo.css"
 
 export default class TodoList extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
     render() {
         return (
@@ -27,6 +27,6 @@ export default class TodoList extends Component {
                     <Filters />
                 </div>
             </div>
-        );
+        )
     }
 }

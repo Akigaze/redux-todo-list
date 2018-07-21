@@ -14,10 +14,11 @@ export const toggle = todos => {
         todos
     }
 }
-export const filter = filterName => {
+export const filter = (filterName,todos) => {
     return {
         type: types.FILTER,
-        filter: filterName
+        filter: filterName,
+        todos
     }
 }
 export const edition = (id, text) => {
