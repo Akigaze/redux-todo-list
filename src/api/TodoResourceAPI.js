@@ -5,12 +5,10 @@ const todoApi = {
     todos: [],
     filter: filterTypes.DEFAULT,
     getHttp() {
-        axios;
-        axios
-            .get("http://5b531c68d9b92700141c9ada.mockapi.io/todo")
+        axios.get("http://localhost:8080/api/todos")
             .then(function(response) {
                 // handle success
-                console.log(response);
+                console.log(response.data._embedded.todos);
             })
             .catch(function(error) {
                 // handle error
@@ -33,12 +31,12 @@ const todoApi = {
     filerByStatus() {
         switch (this.filter) {
             case filterTypes.ACTIVE: {
-                const filterTodos = this.todos.filter(t => !t.completed);
+                const filterTodos = this.todos.filter(t => t.status===filterTypes.ACTIVE);
                 return filterTodos;
             }
 
             case filterTypes.COMPLETE: {
-                const filterTodos = this.todos.filter(t => t.completed);
+                const filterTodos = this.todos.filter(t => t.status===filterTypes.COMPLETE);
                 return filterTodos;
             }
             default:
@@ -55,7 +53,7 @@ const todoApi = {
     updateItemContent(id, content) {
         let todo = this.todos.find(item => item.id === id);
         if (todo !== undefined) {
-            todo.text = content;
+            todo.content = content;
         }
         return this.filerByStatus();
     }

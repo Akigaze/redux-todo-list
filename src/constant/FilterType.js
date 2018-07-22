@@ -1,3 +1,3 @@
-export const DEFAULT = "ALL"
-export const ACTIVE = "ACTIVE"
-export const COMPLETE = "COMPLETE"
+export const DEFAULT = "all"
+export const ACTIVE = "active"
+export const COMPLETE = "completed"

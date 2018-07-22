@@ -11,8 +11,8 @@ export default class TaskGroup extends Component {
         let tasks = todos.map(t => (
             <Task
                 id={t.id}
-                completed={t.completed}
-                text={t.text}
+                status={t.status}
+                content={t.content}
                 toggleTask={toggleTask}
                 confirmEdite={confirmEdite}
             />

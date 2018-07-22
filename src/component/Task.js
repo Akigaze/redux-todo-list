@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import * as filterTypes from '../constant/FilterType'
 import "../css/todo.css"
 
 export default class Task extends Component {
@@ -17,16 +18,16 @@ export default class Task extends Component {
         }
     }
     render() {
-        const { id, toggleTask, completed, text } = this.props
+        const { id, toggleTask, status, content } = this.props
         return (
-            <li className={completed ? "checked" : "none"}>
+            <li className={status==="completed" ? "checked" : "none"}>
                 <input
                     type="checkbox"
                     className="done-todo"
                     onClick={() => toggleTask(id)}
-                    checked={completed ? "checked" : ""}
+                    checked={status==="completed" ? "checked" : ""}
                 />
-            <span onDoubleClick={this.edit} onKeyPress={(event)=>{this.update(id,event)}}>{text}</span>
+            <span onDoubleClick={this.edit} onKeyPress={(event)=>{this.update(id,event)}}>{content}</span>
             </li>
         )
     }

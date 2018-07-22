@@ -8,12 +8,12 @@ import Todo from "../model/todo.js"
 function getTasksByFilter(todos, filter) {
     switch (filter) {
         case filterTypes.ACTIVE: {
-            const filterTodos = todos.filter(t => !t.completed)
+            const filterTodos = todos.filter(t => t.status===filterTypes.ACTIVE)
             return filterTodos
         }
 
         case filterTypes.COMPLETE: {
-            const filterTodos = todos.filter(t => t.completed)
+            const filterTodos = todos.filter(t => t.status===filterTypes.COMPLETE)
             return filterTodos
         }
         default:
@@ -33,8 +33,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             const todos=todoApi.toggleActive(id)
             dispatch(toggle(todos))
         },
-        confirmEdite: (id, text) => {
-            const todos=todoApi.updateItemContent(id,text)
+        confirmEdite: (id, content) => {
+            const todos=todoApi.updateItemContent(id,content)
             dispatch(edition(todos))
         }
     }

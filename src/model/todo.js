@@ -1,13 +1,15 @@
+import * as filterTypes from "../constant/FilterType"
+
 export default class Todo{
 
     constructor(content){
-        this.text = content
-        this.completed = false
+        this.content = content
+        this.status = filterTypes.ACTIVE
         this.id = new Date().getTime()
     }
 
 
     toggleActive() {
-        this.completed = !this.completed
+        this.status = (this.status===filterTypes.ACTIVE)?filterTypes.COMPLETE:filterTypes.ACTIVE
     }
 }
