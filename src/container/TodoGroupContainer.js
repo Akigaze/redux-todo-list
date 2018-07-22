@@ -1,11 +1,11 @@
-import TaskGroup from "../component/TaskGroup"
+import TodoGroup from "../component/TodoGroup"
 import { connect } from "react-redux"
 import { toggle, edition } from "../action/index"
 import * as filterTypes from "../constant/FilterType"
 import todoApi from "../api/TodoResourceAPI"
 import Todo from "../model/todo.js"
 
-function getTasksByFilter(todos, filter) {
+function getTodosByFilter(todos, filter) {
     switch (filter) {
         case filterTypes.ACTIVE: {
             const filterTodos = todos.filter(t => t.status===filterTypes.ACTIVE)
@@ -23,13 +23,13 @@ function getTasksByFilter(todos, filter) {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        todos: state.todos
+        todoObjs: state.todos
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        toggleTask: id => {
+        toggleTodo: id => {
             const todos=todoApi.toggleActive(id)
             dispatch(toggle(todos))
         },
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(TaskGroup)
+)(TodoGroup)

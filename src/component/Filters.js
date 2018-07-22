@@ -7,7 +7,7 @@ export default class Filters extends Component {
     super(props)
   }
   render() {
-    const { currentFilter, filterTask } = this.props
+    const { currentFilter, filterTodo } = this.props
     return (
       <div>
         <ul id="filters">
@@ -15,7 +15,7 @@ export default class Filters extends Component {
             <a
               href="#"
               className={currentFilter === filterTypes.DEFAULT ? "selected" : " "}
-              onClick={() => filterTask(filterTypes.DEFAULT)}
+              onClick={() => filterTodo(filterTypes.DEFAULT)}
             >
               all
             </a>
@@ -24,7 +24,7 @@ export default class Filters extends Component {
             <a
               href="#"
               className={currentFilter === filterTypes.ACTIVE ? "selected" : " "}
-              onClick={() => filterTask(filterTypes.ACTIVE)}
+              onClick={() => filterTodo(filterTypes.ACTIVE)}
             >
               active
             </a>
@@ -33,7 +33,7 @@ export default class Filters extends Component {
             <a
               href="#"
               className={currentFilter === filterTypes.COMPLETE ? "selected" : " "}
-              onClick={() => filterTask(filterTypes.COMPLETE)}
+              onClick={() => filterTodo(filterTypes.COMPLETE)}
             >
               complete
             </a>

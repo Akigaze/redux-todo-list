@@ -1,23 +1,23 @@
 import React, { Component } from "react"
-import Task from "./Task"
+import Todo from "./Todo"
 import "../css/todo.css"
 
-export default class TaskGroup extends Component {
+export default class TodoGroup extends Component {
     constructor(props) {
         super(props)
     }
     render() {
-        const { todos, toggleTask ,confirmEdite} = this.props
-        let tasks = todos.map(t => (
-            <Task
+        const { todoObjs, toggleTodo ,confirmEdite} = this.props
+        let todos = todoObjs.map(t => (
+            <Todo
                 id={t.id}
                 status={t.status}
                 content={t.content}
-                toggleTask={toggleTask}
+                toggleTodo={toggleTodo}
                 confirmEdite={confirmEdite}
             />
         ))
 
-        return <ol className="task">{tasks}</ol>
+        return <ol className="todo">{todos}</ol>
     }
 }

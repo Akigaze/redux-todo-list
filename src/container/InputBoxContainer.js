@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        createTask: text => {
+        createTodo: text => {
             const todos=todoApi.add(new Todo(text.current.value))
             todoApi.getHttp()
             dispatch(addition(todos))}

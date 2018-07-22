@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 
     return {
-        filterTask: status => {
+        filterTodo: status => {
             const todos=todoApi.changeFilter(status)
             dispatch(filter(status,todos))
         }

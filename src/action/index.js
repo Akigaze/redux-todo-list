@@ -1,6 +1,5 @@
 import * as types from "../constant/ActionType"
 
-let nextTaskId = 0
 export const addition = todos => {
     const a = {
         type: types.ADDITION,

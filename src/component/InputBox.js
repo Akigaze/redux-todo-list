@@ -11,8 +11,8 @@ export default class InputBox extends Component {
           this.text.current.value=""
           return
       }
-      const { createTask } = this.props
-      createTask(this.text)
+      const { createTodo } = this.props
+      createTodo(this.text)
       this.text.current.value=""
   }
   render() {

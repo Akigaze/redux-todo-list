@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import TaskGroup from "../container/TaskGroupContainer"
+import TodoGroup from "../container/TodoGroupContainer"
 import InputBox from "../container/InputBoxContainer"
 import Filters from "../container/FiltersContainer"
 
@@ -23,7 +23,7 @@ export default class TodoList extends Component {
                 </div>
                 <div>
                     <InputBox ref={this.value} />
-                    <TaskGroup />
+                    <TodoGroup />
                     <Filters />
                 </div>
             </div>

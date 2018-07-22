@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import * as filterTypes from '../constant/FilterType'
 import "../css/todo.css"
 
-export default class Task extends Component {
+export default class Todo extends Component {
     constructor(props) {
         super(props)
     }
@@ -18,13 +18,13 @@ export default class Task extends Component {
         }
     }
     render() {
-        const { id, toggleTask, status, content } = this.props
+        const { id, toggleTodo, status, content } = this.props
         return (
             <li className={status==="completed" ? "checked" : "none"}>
                 <input
                     type="checkbox"
                     className="done-todo"
-                    onClick={() => toggleTask(id)}
+                    onClick={() => toggleTodo(id)}
                     checked={status==="completed" ? "checked" : ""}
                 />
             <span onDoubleClick={this.edit} onKeyPress={(event)=>{this.update(id,event)}}>{content}</span>
