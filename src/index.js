@@ -5,8 +5,10 @@ import App from "./App";
 import { createStore } from "redux";
 import todo from "./reducer/index";
 import { Provider } from "react-redux";
+import todoApi from "./api/TodoResourceAPI"
 
 const store = createStore(todo);
+todoApi.initState(store.dispatch);
 
 ReactDOM.render(
   <Provider store={store}>

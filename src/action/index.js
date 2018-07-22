@@ -13,7 +13,7 @@ export const toggle = todos => {
         todos
     }
 }
-export const filter = (filterName,todos) => {
+export const filter = (todos,filterName) => {
     return {
         type: types.FILTER,
         filter: filterName,
@@ -23,6 +23,12 @@ export const filter = (filterName,todos) => {
 export const edition = todos => {
     return {
         type: types.EDITION,
+        todos
+    }
+}
+export const initation = todos => {
+    return {
+        type: types.INITATION,
         todos
     }
 }

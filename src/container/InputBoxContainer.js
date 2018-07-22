@@ -1,20 +1,25 @@
-import InputBox from "../component/InputBox"
-import { connect } from "react-redux"
-import { addition } from "../action/index"
-import todoApi from "../api/TodoResourceAPI"
-import Todo from "../model/todo.js"
+import InputBox from "../component/InputBox";
+import { connect } from "react-redux";
+import { addition } from "../action/index";
+import todoApi from "../api/TodoResourceAPI";
+import Todo from "../model/todo.js";
+import * as filterTypes from "../constant/FilterType";
+
 
 const mapStateToProps = (state, ownProps) => {
-    return {}
-}
+    return {};
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createTodo: text => {
-                const todos=todoApi.add(new Todo(text.current.value),dispatch)
-            //dispatch(addition(todos))
+            //const todos=todoApi.add(new Todo(text.current.value),dispatch)
+            const todos = todoApi.add({content:text.current.value,status:filterTypes.ACTIVE}, dispatch);
         }
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(InputBox)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(InputBox);

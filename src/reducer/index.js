@@ -32,20 +32,9 @@ export default (
 ) => {
     switch (action.type) {
         case types.ADDITION: {
-            // const newState=[
-            //     ...state,
-            //     {
-            //         id:action.id,
-            //         text: action.text,
-            //         completed: false
-            //     }
-            // ]
-            // newState = [...action.todos]
             return { ...state, todos: [...action.todos] };
         }
-
         case types.TOGGLE: {
-            //const newState=state.map(s => toggleTask(s, action))
             return { ...state, todos: [...action.todos] };
         }
         case types.EDITION: {
@@ -53,6 +42,9 @@ export default (
         }
         case types.FILTER: {
             return { todos: [...action.todos], filter: action.filter };
+        }
+        case types.INITATION: {
+            return { ...state, todos: [...action.todos] };
         }
         default:
             return state;

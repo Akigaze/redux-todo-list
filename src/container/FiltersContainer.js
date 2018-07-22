@@ -14,8 +14,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
     return {
         filterTodo: status => {
-            const todos=todoApi.changeFilter(status)
-            dispatch(filter(status,todos))
+            const todos=todoApi.changeFilter(status,dispatch)
+            //dispatch(filter(status,todos))
         }
     }
 }
