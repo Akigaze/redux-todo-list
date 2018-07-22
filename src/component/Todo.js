@@ -24,7 +24,7 @@ export default class Todo extends Component {
                 <input
                     type="checkbox"
                     className="done-todo"
-                    onClick={() => toggleTodo(id)}
+                    onClick={() => toggleTodo(id,status)}
                     checked={status==="completed" ? "checked" : ""}
                 />
             <span onDoubleClick={this.edit} onKeyPress={(event)=>{this.update(id,event)}}>{content}</span>

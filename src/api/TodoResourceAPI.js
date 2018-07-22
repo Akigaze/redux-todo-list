@@ -1,6 +1,6 @@
 //import Todo from "../model/todo";
 import * as filterTypes from "../constant/FilterType";
-import { addition } from "../action/index";
+import { addition, toggle, filter, edition } from "../action/index";
 const axios = require("axios");
 
 const todoApi = {
@@ -25,16 +25,34 @@ const todoApi = {
     //         });
     //     return [];
     // },
-    getRequest(callback) {
+    getPathByFilter() {
+        let path = null;
+        switch (this.filter) {
+            case filterTypes.ACTIVE:
+                path =
+                    "http://localhost:8080/api/todos/search/statusOfTodos?status=active";
+                break;
+            case filterTypes.COMPLETE:
+                path =
+                    "http://localhost:8080/api/todos/search/statusOfTodos?status=completed";
+                break;
+            default:
+                path =
+                    "http://localhost:8080/api/todos/search/statusOfTodos?status=completed,active";
+        }
+        return path;
+    },
+    getRequest(callback, getAction) {
+        const path = this.getPathByFilter();
         axios
-            .get("http://localhost:8080/api/todos")
+            .get(path)
             .then(response => {
                 this.todos = response.data._embedded.todos.map(t => {
                     const { id, content, status } = t;
                     return { id, content, status };
                 });
-                this.filerByStatus();
-                callback(addition(this.todos));
+                //this.filerByStatus();
+                callback(getAction(this.todos));
             })
             .catch(function(error) {
                 console.log(error);
@@ -46,7 +64,7 @@ const todoApi = {
             .post("http://localhost:8080/api/todos", { id: 1, content, status })
             .then(response => {
                 console.log(response);
-                this.getRequest(callback);
+                this.getRequest(callback, addition);
             })
             .catch(function(error) {
                 console.log(error);
@@ -76,17 +94,18 @@ const todoApi = {
                 return this.todos;
         }
     },
-    toggleActive(id, callback) {
-        let todo = this.todos.find(item => item.id === id);
-        if (todo !== undefined) {
-            todo.status =
-                todo.status === filterTypes.ACTIVE
-                    ? filterTypes.COMPLETE
-                    : filterTypes.ACTIVE;
-            axios.patch(`http://localhost:8080/api/todos/${id}`, {
-                status: todo.status
+    toggleActive(id, status, callback) {
+        const newStatus =
+            (status === filterTypes.ACTIVE)
+                ? filterTypes.COMPLETE
+                : filterTypes.ACTIVE;
+        axios
+            .patch(`http://localhost:8080/api/todos/${id}`, {
+                status: newStatus
+            })
+            .then(response => {
+                this.getRequest(callback, toggle);
             });
-        }
         return this.filerByStatus();
     },
     updateItemContent(id, content) {

@@ -29,9 +29,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        toggleTodo: id => {
-            const todos=todoApi.toggleActive(id)
-            dispatch(toggle(todos))
+        toggleTodo: (id,status) => {
+            const todos=todoApi.toggleActive(id,status,dispatch)
+            //dispatch(toggle(todos))
         },
         confirmEdite: (id, content) => {
             const todos=todoApi.updateItemContent(id,content)
