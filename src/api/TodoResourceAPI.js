@@ -106,14 +106,23 @@ const todoApi = {
             .then(response => {
                 this.getRequest(callback, toggle);
             });
-        return this.filerByStatus();
     },
-    updateItemContent(id, content) {
-        let todo = this.todos.find(item => item.id === id);
-        if (todo !== undefined) {
-            todo.content = content;
-        }
-        return this.filerByStatus();
+    updateItemContent(id, newContent,callback) {
+        axios
+            .patch(`http://localhost:8080/api/todos/${id}`, {
+                content: newContent
+            })
+            .then(response => {
+                this.getRequest(callback, edition);
+            });
+
+
+        //
+        // let todo = this.todos.find(item => item.id === id);
+        // if (todo !== undefined) {
+        //     todo.content = content;
+        // }
+        // return this.filerByStatus();
     }
 };
 export default todoApi;

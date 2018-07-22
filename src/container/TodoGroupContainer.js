@@ -34,8 +34,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             //dispatch(toggle(todos))
         },
         confirmEdite: (id, content) => {
-            const todos=todoApi.updateItemContent(id,content)
-            dispatch(edition(todos))
+            const todos=todoApi.updateItemContent(id,content,dispatch)
+            //dispatch(edition(todos))
         }
     }
 }

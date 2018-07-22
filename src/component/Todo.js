@@ -8,6 +8,7 @@ export default class Todo extends Component {
     }
     edit=(event)=>{
         event.target.setAttribute("contentEditable","true");
+        event.target.focus()
     }
     update=(id,event)=>{
         const key=event.key
