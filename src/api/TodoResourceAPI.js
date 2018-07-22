@@ -1,37 +1,20 @@
 import Todo from "../model/todo";
 import * as filterTypes from "../constant/FilterType";
-import { addition } from "../action/index"
+import { addition } from "../action/index";
 const axios = require("axios");
-
 
 const todoApi = {
     todos: [],
     filter: filterTypes.DEFAULT,
 
-    initState() {
-        axios
-            .get("http://localhost:8080/api/todos")
-            .then((response)=>{
-                const todostemp=response.data._embedded.todos.map(t=>{
-                    const {id,content,status}=t;
-                    return {id,content,status};
-                });
-            })
-            .catch(function(error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function() {
-                // always executed
-            });
-            return []
-    },
-    // getHttp() {
+    // initState() {
     //     axios
     //         .get("http://localhost:8080/api/todos")
-    //         .then(function(response) {
-    //             // handle success
-    //             console.log(response.data._embedded.todos);
+    //         .then(response => {
+    //             const todostemp = response.data._embedded.todos.map(t => {
+    //                 const { id, content, status } = t;
+    //                 return { id, content, status };
+    //             });
     //         })
     //         .catch(function(error) {
     //             // handle error
@@ -40,27 +23,37 @@ const todoApi = {
     //         .then(function() {
     //             // always executed
     //         });
+    //     return [];
     // },
-
-    add(item,callback) {
-        this.todos.push(item);
+    getRequest(callback){
         axios
             .get("http://localhost:8080/api/todos")
-            .then((response)=>{
-                this.todos=response.data._embedded.todos.map(t=>{
-                    const {id,content,status}=t;
-                    return {id,content,status};
+            .then(response => {
+                this.todos = response.data._embedded.todos.map(t => {
+                    const { id, content, status } = t;
+                    return { id, content, status };
                 });
                 this.filerByStatus();
                 callback(addition(this.todos));
             })
             .catch(function(error) {
-                // handle error
                 console.log(error);
             })
-            .then(function() {
-                // always executed
+            .then(function() { });
+    },
+    add(item, callback) {
+        const { id, content, status } = item;
+        axios
+            .post("http://localhost:8080/api/todos", { id:1, content, status })
+            .then(response => {
+                console.log(response);
+                this.getRequest(callback);
+            })
+            .catch(function(error) {
+                console.log(error);
             });
+
+
     },
     changeFilter(selection) {
         this.filter = selection;
