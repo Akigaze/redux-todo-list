@@ -1,4 +1,4 @@
-import Todo from "../model/todo";
+//import Todo from "../model/todo";
 import * as filterTypes from "../constant/FilterType";
 import { addition } from "../action/index";
 const axios = require("axios");
@@ -25,7 +25,7 @@ const todoApi = {
     //         });
     //     return [];
     // },
-    getRequest(callback){
+    getRequest(callback) {
         axios
             .get("http://localhost:8080/api/todos")
             .then(response => {
@@ -38,13 +38,12 @@ const todoApi = {
             })
             .catch(function(error) {
                 console.log(error);
-            })
-            .then(function() { });
+            });
     },
     add(item, callback) {
         const { id, content, status } = item;
         axios
-            .post("http://localhost:8080/api/todos", { id:1, content, status })
+            .post("http://localhost:8080/api/todos", { id: 1, content, status })
             .then(response => {
                 console.log(response);
                 this.getRequest(callback);
@@ -52,8 +51,6 @@ const todoApi = {
             .catch(function(error) {
                 console.log(error);
             });
-
-
     },
     changeFilter(selection) {
         this.filter = selection;
@@ -79,10 +76,16 @@ const todoApi = {
                 return this.todos;
         }
     },
-    toggleActive(id) {
+    toggleActive(id, callback) {
         let todo = this.todos.find(item => item.id === id);
         if (todo !== undefined) {
-            todo.toggleActive();
+            todo.status =
+                todo.status === filterTypes.ACTIVE
+                    ? filterTypes.COMPLETE
+                    : filterTypes.ACTIVE;
+            axios.patch(`http://localhost:8080/api/todos/${id}`, {
+                status: todo.status
+            });
         }
         return this.filerByStatus();
     },
