@@ -46,7 +46,6 @@ const todoApi = {
         axios
             .post("http://localhost:8080/api/todos", { content, status })
             .then(response => {
-                console.log(response);
                 this.getRequest(callback, addition);
             })
             .catch(function(error) {
