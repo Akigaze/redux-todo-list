@@ -58,7 +58,7 @@ const todoApi = {
         this.getRequest(callback, filter, newFilter);
     },
 
-    toggleActive(id, status, callback) {
+    toggleActive(id, status, dispatch) {
         const newStatus =
             status === filterTypes.ACTIVE
                 ? filterTypes.COMPLETE
@@ -68,7 +68,12 @@ const todoApi = {
                 status: newStatus
             })
             .then(response => {
-                this.getRequest(callback, toggle);
+                const {id,content,status}=response.data
+                const modifyTodo={id,content,status}
+                dispatch(toggle(modifyTodo))
+                //this.getRequest(callback, toggle);
+            }).catch(function(error) {
+                console.log(error);
             });
     },
 

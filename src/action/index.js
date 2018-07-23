@@ -1,16 +1,15 @@
 import * as types from "../constant/ActionType"
 
 export const addition = todos => {
-    const a = {
+    return {
         type: types.ADDITION,
         todos
     }
-    return a
 }
-export const toggle = todos => {
+export const toggle = todo => {
     return {
         type: types.TOGGLE,
-        todos
+        todo
     }
 }
 export const filter = (todos,filterName) => {

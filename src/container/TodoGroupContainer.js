@@ -23,7 +23,6 @@ function getTodosByFilter(todos, filter) {
 
 const mapStateToProps = (state, ownProps) => {
     let filter=ownProps.match.params.status
-    console.log(filter);
     const todoObjs=getTodosByFilter(state.todos,filter)
     return {
         todoObjs
@@ -33,8 +32,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         toggleTodo: (id,status) => {
-            const todos=todoApi.toggleActive(id,status,dispatch)
-            //dispatch(toggle(todos))
+            todoApi.toggleActive(id,status,dispatch)
         },
         confirmEdite: (id, content) => {
             const todos=todoApi.updateItemContent(id,content,dispatch)

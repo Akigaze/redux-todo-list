@@ -14,7 +14,11 @@ export default (
             return { ...state, todos: [...action.todos] };
         }
         case types.TOGGLE: {
-            return { ...state, todos: [...action.todos] };
+            const {todos,filter}=state
+            const newState={todos:[...todos],filter}
+            newState.todos.find(t=>t.id===action.todo.id).status=action.todo.status
+            return newState
+            //return { ...state, todos: [...action.todos] };
         }
         case types.EDITION: {
             return { ...state, todos: [...action.todos] };
