@@ -30,10 +30,12 @@ export default (
             return {todos:newTodos,filter}
         }
         case types.FILTER: {
-            return { todos: [...action.todos], filter: action.filter };
+            const {todos,filter} = action
+            return { todos, filter };
         }
         case types.INITATION: {
-            return { ...state, todos: [...action.todos] };
+            const {todos,filter} = action
+            return { ...state, todos };
         }
         default:
             return state;
