@@ -2,7 +2,8 @@ import React, { Component } from "react"
 import TodoGroup from "../container/TodoGroupContainer"
 import InputBox from "../container/InputBoxContainer"
 import Filters from "../container/FiltersContainer"
-
+import {BrowserRouter,Route,Link} from "react-router-dom"
+import * as filterTypes from "../constant/FilterType"
 import "../css/todo.css"
 
 export default class TodoList extends Component {
@@ -23,7 +24,12 @@ export default class TodoList extends Component {
                 </div>
                 <div>
                     <InputBox ref={this.value} />
-                    <TodoGroup />
+                    <BrowserRouter>
+                        <div>
+                            <Route exact path="/" component={TodoGroup}/>
+                            <Route path="/:status" component={TodoGroup}/>
+                        </div>
+                    </BrowserRouter>
                     <Filters />
                 </div>
             </div>

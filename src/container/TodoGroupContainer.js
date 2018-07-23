@@ -22,8 +22,11 @@ function getTodosByFilter(todos, filter) {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    let filter=ownProps.match.params.status
+    console.log(filter);
+    const todoObjs=getTodosByFilter(state.todos,filter)
     return {
-        todoObjs: state.todos
+        todoObjs
     }
 }
 

@@ -4,28 +4,7 @@ import todoApi from "../api/TodoResourceAPI";
 
 export default (
     state = {
-        todos: [
-            // {
-            //     id: 1,
-            //     content: "Remove unused imports",
-            //     status: "active"
-            // },
-            // {
-            //     id: 2,
-            //     content: "Clean the code",
-            //     status: "completed"
-            // },
-            // {
-            //     id: 3,
-            //     content: "Build the artifacts",
-            //     status: "active"
-            // },
-            // {
-            //     id: 4,
-            //     content: "Deploy the jar file",
-            //     status: "active"
-            // }
-        ],
+        todos: [],
         filter: filterTypes.DEFAULT
     },
     action
