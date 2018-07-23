@@ -7,10 +7,10 @@ import Todo from "../model/todo.js"
 
 function getTodosByFilter(todos, filter) {
     switch (filter) {
-        case filterTypes.ACTIVE: {
-            const filterTodos = todos.filter(t => t.status===filterTypes.ACTIVE)
-            return filterTodos
-        }
+        // case filterTypes.ACTIVE: {
+        //     const filterTodos = todos.filter(t => t.status===filterTypes.ACTIVE)
+        //     return filterTodos
+        // }
 
         case filterTypes.COMPLETE: {
             const filterTodos = todos.filter(t => t.status===filterTypes.COMPLETE)

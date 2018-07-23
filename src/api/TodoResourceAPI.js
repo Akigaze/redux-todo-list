@@ -77,13 +77,16 @@ const todoApi = {
             });
     },
 
-    updateItemContent(id, newContent, callback) {
+    updateItemContent(id, newContent, dispatch) {
         axios
             .patch(`http://localhost:8080/api/todos/${id}`, {
                 content: newContent
             })
             .then(response => {
-                this.getRequest(callback, edition);
+                //this.getRequest(callback, edition);
+                const {id,content,status}=response.data
+                const modifyTodo={id,content,status}
+                dispatch(edition(modifyTodo))
             });
     },
 

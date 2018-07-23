@@ -19,10 +19,10 @@ export const filter = (todos,filterName) => {
         todos
     }
 }
-export const edition = todos => {
+export const edition = todo => {
     return {
         type: types.EDITION,
-        todos
+        todo
     }
 }
 export const initation = todos => {

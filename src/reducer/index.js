@@ -15,13 +15,16 @@ export default (
         }
         case types.TOGGLE: {
             const {todos,filter}=state
-            const newState={todos:[...todos],filter}
-            newState.todos.find(t=>t.id===action.todo.id).status=action.todo.status
-            return newState
+            const newTodos=[...todos]
+            newTodos.find(t=>t.id===action.todo.id).status=action.todo.status
+            return {todos:getTodosByFilter(newTodos, state.filter),filter}
             //return { ...state, todos: [...action.todos] };
         }
         case types.EDITION: {
-            return { ...state, todos: [...action.todos] };
+            const {todos,filter}=state
+            const newTodos=[...todos]
+            newTodos.find(t=>t.id===action.todo.id).content=action.todo.content
+            return {todos:newTodos,filter}
         }
         case types.FILTER: {
             return { todos: [...action.todos], filter: action.filter };
@@ -34,12 +37,18 @@ export default (
     }
 };
 
-// const toggleTask = (task, action) => {
-//     if (task.id !== action.id) {
-//         return task
-//     }
-//     return {
-//         ...task,
-//         completed: task.completed ? false : true
-//     }
-// }
+function getTodosByFilter(todos, filter) {
+    switch (filter) {
+        case filterTypes.ACTIVE: {
+            const filterTodos = todos.filter(t => t.status===filterTypes.ACTIVE)
+            return filterTodos
+        }
+
+        case filterTypes.COMPLETE: {
+            const filterTodos = todos.filter(t => t.status===filterTypes.COMPLETE)
+            return filterTodos
+        }
+        default:
+            return todos
+    }
+}

@@ -6,7 +6,7 @@ import { createStore } from "redux";
 import todo from "./reducer/index";
 import { Provider } from "react-redux";
 import todoApi from "./api/TodoResourceAPI"
-
+console.log("hahah")
 const store = createStore(todo);
 todoApi.initState(store.dispatch);
 
