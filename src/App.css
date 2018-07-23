@@ -1,5 +1,11 @@
-.App {
 
+body{
+
+
+}
+.App {
+    background-color: #eaeaea;
+    height: 1000px;
 }
 
 .App-logo {
@@ -8,9 +14,8 @@
 }
 
 .App-header {
-  background-color: #222;
   text-align: center;
-  height: 120px;
+  height: 80px;
   padding: 20px;
   color: white;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import * as filterTypes from '../constant/FilterType'
 import "../css/todo.css"
+import { Checkbox } from 'antd';
 
 export default class Todo extends Component {
     constructor(props) {
@@ -18,16 +19,18 @@ export default class Todo extends Component {
 
         }
     }
+    onChange=(e) =>{
+      console.log(`checked = ${e.target.checked}`);
+    }
     render() {
         const { id, toggleTodo, status, content } = this.props
         return (
+
             <li className={status==="completed" ? "checked" : "none"}>
-                <input
-                    type="checkbox"
-                    className="done-todo"
-                    onClick={() => toggleTodo(id,status)}
-                    checked={status==="completed" ? "checked" : ""}
-                />
+                <Checkbox onChange={this.onChange} onClick={() => toggleTodo(id,status)}
+                checked={status==="completed" ? "checked" : ""}></Checkbox>
+
+                
             <span onDoubleClick={this.edit} onKeyPress={(event)=>{this.update(id,event)}}>{content}</span>
             </li>
         )
