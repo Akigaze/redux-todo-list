@@ -1,9 +1,9 @@
 import * as types from "../constant/ActionType"
 
-export const addition = todos => {
+export const addition = todo => {
     return {
         type: types.ADDITION,
-        todos
+        todo
     }
 }
 export const toggle = todo => {

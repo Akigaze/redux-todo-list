@@ -11,7 +11,10 @@ export default (
 ) => {
     switch (action.type) {
         case types.ADDITION: {
-            return { ...state, todos: [...action.todos] };
+            const {todos,filter}=state
+            const newTodos=[...todos]
+            newTodos.push(action.todo)
+            return {todos:getTodosByFilter(newTodos, state.filter),filter}
         }
         case types.TOGGLE: {
             const {todos,filter}=state

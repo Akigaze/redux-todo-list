@@ -41,12 +41,14 @@ const todoApi = {
             });
     },
 
-    add(item, callback) {
+    add(item, dispatch) {
         const { content, status } = item;
         axios
             .post("http://localhost:8080/api/todos", { content, status })
             .then(response => {
-                this.getRequest(callback, addition);
+                const {id,content,status}=response.data
+                const newTodo={id,content,status}
+                dispatch(addition(newTodo))
             })
             .catch(function(error) {
                 console.log(error);
