@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createTodo: text => {
             //const todos=todoApi.add(new Todo(text.current.value),dispatch)
-            const todos = todoApi.add({content:text.current.value,status:filterTypes.ACTIVE}, dispatch);
+            const todos = todoApi.add({content:text,status:filterTypes.ACTIVE}, dispatch);
         }
     };
 };
